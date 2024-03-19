@@ -1,4 +1,5 @@
 import Footer from "./components/Footer"
+import Navbar from "./components/Navbar"
 
 function App() {
 
@@ -9,12 +10,12 @@ function App() {
   }
 
   return (
-    <>
-      <h1>Hola {nombre}</h1>
-      <button onClick={sumar}>sumar</button>
+    <div>
+      <Navbar />
       <Footer />
-    </>
+    </div>
   )
+
 }
 
 export default App
