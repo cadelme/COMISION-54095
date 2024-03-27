@@ -1,20 +1,16 @@
-import Footer from "./components/Footer"
-import Home from "./components/Home"
-import Navbar from "./components/Navbar"
+import { ThemeProvider } from "@mui/material"
+import Navbar from "./components/layout/navbar/NavbBar"
+import { themeStore } from "./components/themeConfig"
+import ItemListContainer from "./components/pages/itemListContainer/ItemListContainer"
 
 function App() {
-  let nombre = "Pepe"
-
-  const sumar = () => {
-    console.log(5 + 2)
-  }
-
   return (
-    <div>
-      <Navbar />
-      <Home />
-      <Footer />
-    </div>
+    <ThemeProvider theme={themeStore}>
+      <div>
+        <Navbar />
+        <ItemListContainer greeting={"Bienvenidos a mi Tienda"} />
+      </div>
+    </ThemeProvider>
   )
 }
 
