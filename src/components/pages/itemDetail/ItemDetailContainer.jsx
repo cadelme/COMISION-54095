@@ -19,9 +19,15 @@ const ItemDetailContainer = () => {
     getProduct.then((res) => setItem(res))
   }, [id])
 
-  console.log(item)
+  const onAdd = (cant) => {
+    //agregar
 
-  return <ItemDetail item={item} />
+    let itemFull = { ...item, quantity: cant }
+
+    console.log(itemFull)
+  }
+
+  return <ItemDetail item={item} onAdd={onAdd} />
 }
 
 export default ItemDetailContainer
