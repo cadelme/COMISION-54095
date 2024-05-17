@@ -7,19 +7,21 @@ const ItemList = ({ items, error }) => {
     <div>
       <Grid
         container
+        justifyContent="left"
+        alignItems="center"
         style={{
-          display: "flex",
-          justifyContent: "space-around",
+          // minHeight: "100vh", // Asegura que el Grid ocupe toda la altura de la pantalla
           paddingTop: "1em",
+          paddingLeft: "2em",
         }}
       >
-        {items.map(({ id, tittle, description, price, img }) => {
+        {items.map(({ id, title, description, price, img }) => {
           return (
             <Grid key={id}>
               <ProductCard
                 key={id}
                 id={id}
-                tittle={tittle}
+                title={title}
                 description={description}
                 price={price}
                 img={img}

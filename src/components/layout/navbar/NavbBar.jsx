@@ -59,9 +59,11 @@ const Navbar = () => {
               Urban
             </Typography>
           </Link>
-          <Typography variant="h6" component="div" sx={styles}>
-            About Us
-          </Typography>
+          <Link to="/aboutus" style={styles}>
+            <Typography variant="h6" component="div" sx={styles}>
+              About Us
+            </Typography>
+          </Link>
           <CarWidget />
         </Toolbar>
       </AppBar>

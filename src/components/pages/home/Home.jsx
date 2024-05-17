@@ -1,10 +1,15 @@
 import React from "react"
-import { Typography, Grid } from "@mui/material"
+import { Typography } from "@mui/material"
 
 const home = () => {
   return (
     <div>
-      <Typography variant="h4" align="center" sx={{ paddingTop: "40px" }}>
+      <Typography
+        variant="h4"
+        align="center"
+        color="primary"
+        sx={{ paddingTop: "40px" }}
+      >
         Bienvenidos a Sport Club
       </Typography>
       <div>

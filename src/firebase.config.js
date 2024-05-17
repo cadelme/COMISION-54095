@@ -5,7 +5,7 @@ import { getFirestore } from "firebase/firestore"
 const firebaseConfig = {
   apiKey: import.meta.env.VITE_APIKEY,
   authDomain: import.meta.env.VITE_AUTH,
-  projectId: import.meta.env.VITE_PROJECTID,
+  projectId: "comision-54095-d3b50",
   storageBucket: import.meta.env.VITE_STORAGE,
   messagingSenderId: import.meta.env.VITE_MENSENDERID,
   appId: import.meta.env.VITE_APPID,

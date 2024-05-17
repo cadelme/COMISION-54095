@@ -2,11 +2,10 @@ import { useEffect, useState } from "react"
 import ItemList from "./ItemList"
 import { useParams } from "react-router-dom"
 import { Skeleton } from "@mui/material"
-import { db } from "../../../firebaseConfig.js"
+import { db } from "../../../firebase.config.js"
 import { Button } from "@mui/material"
 
 import { addDoc, collection, getDocs, query, where } from "firebase/firestore"
-import { products } from "../../../productMock.js"
 
 const ItemListContainer = () => {
   const { name } = useParams()
@@ -14,7 +13,7 @@ const ItemListContainer = () => {
   // name --> string
 
   const [items, setItems] = useState([])
-  const [error, setError] = useState([null])
+  const [error, setError] = useState(null)
 
   useEffect(() => {
     const productsCollection = collection(db, "products")
@@ -25,12 +24,17 @@ const ItemListContainer = () => {
       consulta = query(productsCollection, where("category", "==", name))
     }
 
-    getDocs(consulta).then((res) => {
-      let newArray = res.docs.map((doc) => {
-        return { id: doc.id, ...doc.data() }
+    getDocs(consulta)
+      .then((res) => {
+        let newArray = res.docs.map((doc) => {
+          return { id: doc.id, ...doc.data() }
+        })
+        setItems(newArray)
       })
-      setItems(newArray)
-    })
+      .catch((err) => {
+        console.error("Error fetching documents: ", err)
+        setError(err)
+      })
   }, [name])
 
   // AGREGAR BASE DE DATOS

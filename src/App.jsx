@@ -9,6 +9,7 @@ import CartContainer from "./components/pages/cart/CartContainer"
 import Home from "./components/pages/home/Home"
 import Checkout from "./components/pages/checkout/Checkout"
 import CartContextProvider from "./context/CartContext"
+import AboutUS from "./components/pages/aboutUS/AboutUS"
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
               <Route path="/products" element={<ItemListContainer />} />
               <Route path="/category/:name" element={<ItemListContainer />} />
               <Route path="/itemDetail/:id" element={<ItemDetailContainer />} />
+              <Route path="/aboutus" element={<AboutUS />} />
               <Route path="/cart" element={<CartContainer />} />
               <Route path="/checkout" element={<Checkout />} />
 

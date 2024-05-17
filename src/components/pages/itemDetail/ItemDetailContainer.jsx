@@ -3,12 +3,11 @@ import ItemDetail from "./ItemDetail"
 import { useParams } from "react-router-dom"
 import { CartContext } from "../../../context/CartContext"
 import Swal from "sweetalert2"
-import { db } from "../../../firebaseConfig.js"
+import { db } from "../../../firebase.config.js"
 import { collection, getDoc, doc } from "firebase/firestore"
 
 const ItemDetailContainer = () => {
   const { id } = useParams()
-  console.log(id)
 
   const [item, setItem] = useState({})
 

@@ -14,7 +14,7 @@ const CarWidget = () => {
     <div>
       <Link to="/cart">
         <Badge badgeContent={total} color={"secondary"}>
-          <ShoppingCartIcon />
+          <ShoppingCartIcon style={{ color: "white" }} />
         </Badge>
       </Link>
     </div>
