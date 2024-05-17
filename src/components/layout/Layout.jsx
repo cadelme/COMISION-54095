@@ -8,7 +8,7 @@ export const Layout = () => {
       <Navbar />
       <Outlet />
       <div style={{ position: "absolute", bottom: 0, width: "100%" }}>
-        <Footer />
+        {/* <Footer /> */}
       </div>
     </div>
   )

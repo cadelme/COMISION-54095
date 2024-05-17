@@ -3,7 +3,6 @@ import ProductCard from "../../common/productCard/ProductCard"
 import { Grid } from "@mui/material"
 
 const ItemList = ({ items, error }) => {
-  console.log(items)
   return (
     <div>
       <Grid

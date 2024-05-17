@@ -54,6 +54,11 @@ const Navbar = () => {
               Casual
             </Typography>
           </Link>
+          <Link to="/category/Urban" style={styles}>
+            <Typography variant="h6" component="div">
+              Urban
+            </Typography>
+          </Link>
           <Typography variant="h6" component="div" sx={styles}>
             About Us
           </Typography>

@@ -1,7 +1,12 @@
-import { products } from "../../../productMock"
 import { useEffect, useState } from "react"
 import ItemList from "./ItemList"
 import { useParams } from "react-router-dom"
+import { Skeleton } from "@mui/material"
+import { db } from "../../../firebaseConfig.js"
+import { Button } from "@mui/material"
+
+import { addDoc, collection, getDocs, query, where } from "firebase/firestore"
+import { products } from "../../../productMock.js"
 
 const ItemListContainer = () => {
   const { name } = useParams()
@@ -12,27 +17,91 @@ const ItemListContainer = () => {
   const [error, setError] = useState([null])
 
   useEffect(() => {
-    let productsFiltered = products.filter(
-      (products) => products.category === name
-    )
+    const productsCollection = collection(db, "products")
 
-    const getProducts = new Promise((resolve, reject) => {
-      let x = true
-      if (x) {
-        resolve(name ? productsFiltered : products)
-      } else {
-        reject({ status: 400, message: "Algo salio mal" })
-      }
-    })
+    let consulta = productsCollection
 
-    getProducts
-      .then((res) => setItems(res))
-      .catch((error) => {
-        setError(error)
+    if (name) {
+      consulta = query(productsCollection, where("category", "==", name))
+    }
+
+    getDocs(consulta).then((res) => {
+      let newArray = res.docs.map((doc) => {
+        return { id: doc.id, ...doc.data() }
       })
+      setItems(newArray)
+    })
   }, [name])
 
-  return <ItemList items={items} error={error} />
+  // AGREGAR BASE DE DATOS
+
+  // const addDocs = () => {
+  //   let productsCollection = collection(db, "products")
+  //   products.forEach((product) => addDoc(productsCollection, product))
+  // }
+
+  return (
+    <>
+      {items.length > 0 ? (
+        <ItemList items={items} error={error} />
+      ) : (
+        <>
+          <div
+            style={{
+              display: "Flex",
+              gap: "30px",
+              justifyContent: "space-around",
+              paddingTop: "1em",
+            }}
+          >
+            <div>
+              <Skeleton variant="rectangular" width={310} height={200} />
+              <Skeleton
+                variant="text"
+                width={210}
+                height={60}
+                sx={{ fontSize: "1rem" }}
+              />
+              <Skeleton variant="text" width={105} sx={{ fontSize: "1rem" }} />
+            </div>
+            <div>
+              <Skeleton variant="rectangular" width={310} height={200} />
+              <Skeleton
+                variant="text"
+                width={210}
+                height={60}
+                sx={{ fontSize: "1rem" }}
+              />
+              <Skeleton variant="text" width={105} sx={{ fontSize: "1rem" }} />
+            </div>
+            <div>
+              <Skeleton variant="rectangular" width={310} height={200} />
+              <Skeleton
+                variant="text"
+                width={210}
+                height={60}
+                sx={{ fontSize: "1rem" }}
+              />
+              <Skeleton variant="text" width={105} sx={{ fontSize: "1rem" }} />
+            </div>
+            <div>
+              <Skeleton variant="rectangular" width={310} height={200} />
+              <Skeleton
+                variant="text"
+                width={210}
+                height={60}
+                sx={{ fontSize: "1rem" }}
+              />
+              <Skeleton variant="text" width={105} sx={{ fontSize: "1rem" }} />
+            </div>
+          </div>
+        </>
+      )}
+      {/* <Button onClick={addDocs} variant="contained">
+        Agregar documentos
+      </Button> */}
+    </>
+  )
 }
 
 export default ItemListContainer

@@ -1,7 +1,7 @@
 import { Card, CardMedia, CardContent, Typography } from "@mui/material"
 import { CounterContainer } from "../../common/counter/CounterContainer"
 
-const ItemDetail = ({ item, onAdd }) => {
+const ItemDetail = ({ item, onAdd, initial }) => {
   return (
     <div>
       <Card sx={{ maxWidth: "100%" }}>
@@ -18,7 +18,7 @@ const ItemDetail = ({ item, onAdd }) => {
           </Typography>
         </CardContent>
       </Card>
-      <CounterContainer stock={item.stock} onAdd={onAdd} />
+      <CounterContainer stock={item.stock} onAdd={onAdd} initial={initial} />
     </div>
   )
 }

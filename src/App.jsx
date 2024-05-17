@@ -8,28 +8,31 @@ import ItemDetailContainer from "./components/pages/itemDetail/ItemDetailContain
 import CartContainer from "./components/pages/cart/CartContainer"
 import Home from "./components/pages/home/Home"
 import Checkout from "./components/pages/checkout/Checkout"
+import CartContextProvider from "./context/CartContext"
 
 function App() {
   return (
     <ThemeProvider theme={themeStore}>
       <BrowserRouter>
-        <Routes>
-          <Route element={<Layout />}>
-            <Route path="/" element={<Home />} />
-            <Route path="/products" element={<ItemListContainer />} />
-            <Route path="/category/:name" element={<ItemListContainer />} />
-            <Route path="/itemDetail/:id" element={<ItemDetailContainer />} />
-            <Route path="/cart" element={<CartContainer />} />
-            <Route path="/checkout" element={<Checkout />} />
+        <CartContextProvider>
+          <Routes>
+            <Route element={<Layout />}>
+              <Route path="/" element={<Home />} />
+              <Route path="/products" element={<ItemListContainer />} />
+              <Route path="/category/:name" element={<ItemListContainer />} />
+              <Route path="/itemDetail/:id" element={<ItemDetailContainer />} />
+              <Route path="/cart" element={<CartContainer />} />
+              <Route path="/checkout" element={<Checkout />} />
 
-            <Route
-              path="/products"
-              element={<h1>Este es la ruta products</h1>}
-            />
+              <Route
+                path="/products"
+                element={<h1>Este es la ruta products</h1>}
+              />
 
-            <Route path="*" element={<h1>Error</h1>} />
-          </Route>
-        </Routes>
+              <Route path="*" element={<h1>Error</h1>} />
+            </Route>
+          </Routes>
+        </CartContextProvider>
       </BrowserRouter>
     </ThemeProvider>
   )
